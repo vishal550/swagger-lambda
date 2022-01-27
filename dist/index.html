@@ -1,0 +1,67 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="swagger-ui"></div>
+
+    <script src="./swagger-ui-bundle.js"> </script>
+    <script src="./swagger-ui-standalone-preset.js"> </script>
+    <script>
+      // <input id="bearer-code-input" type="text" placeholder="Enter Bearer Token here" style="width: auto" value="yourtoken" />
+
+    window.onload = function() {
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        url: "http://localhost:3002/swagger.json",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout",
+        // requestInterceptor: function (req) {
+        //   req.headers = {
+        //   'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJ1c2VySWQiOjMzOSwidGVuYW50SWQiOjIsInJvbGUiOiJEZXNpZ25lciIsInJvbGVfaWQiOjMsInJvbGVJZCI6M31dLCJpYXQiOjE2NDMyODM2NTksImV4cCI6MTY0MzM3MDA1OX0.5jDAZVJ9NNPcG_g0FTuB8Q7GbHZOCbLVKC9Fs7wN-bQ' };
+        //     return req;
+        //   },
+      })
+      // End Swagger UI call regionval
+
+      window.ui = ui
+    }
+  </script>
+  </body>
+</html>
